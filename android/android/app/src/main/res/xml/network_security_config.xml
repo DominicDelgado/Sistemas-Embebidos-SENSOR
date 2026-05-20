@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    network_security_config.xml
+
+    Desde Android 9 (API 28), el sistema bloquea por defecto el trafico HTTP
+    en claro (sin cifrar), permitiendo solo HTTPS.
+
+    Como el backend de este proyecto corre en una IP publica sin certificado SSL,
+    aqui se autoriza una excepcion para que la app pueda comunicarse con el
+    servidor mediante HTTP.
+
+    Resto del trafico de red sigue exigiendo HTTPS (comportamiento seguro).
+
+    NOTA: en un despliegue productivo se deberia instalar un certificado SSL
+    gratuito (Let's Encrypt) en el servidor y eliminar esta excepcion.
+-->
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">98.87.5.225</domain>
+    </domain-config>
+</network-security-config>
